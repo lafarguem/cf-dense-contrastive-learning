@@ -1,0 +1,7 @@
+defaults:
+  - dataloader_base
+  - _self_
+
+dataset:
+  train_prop: 0.9
+  cf_suffixes: ${data.train.dataset.cf_suffixes}

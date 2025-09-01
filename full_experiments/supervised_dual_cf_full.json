@@ -1,0 +1,49 @@
+{
+    "pretraining": [
+        {
+            "slurm_args": "--partition gpus24",
+            "experiment": "supervised_cf_dense_two_noflip_random",
+            "ablations": [
+                [
+                    {
+                        "key": "data.train.augmentation.rotate",
+                        "value": false
+                    },
+                    {
+                        "key": "data.train.augmentation.crop",
+                        "value": false
+                    }
+                ],
+                [
+                    {
+                        "key": "data.train.augmentation.rotate",
+                        "value": false
+                    }
+                ],
+                [
+                    {
+                        "key": "data.train.augmentation.crop",
+                        "value": false
+                    }
+                ],
+                [
+                    {
+                        "key": "data.train.augmentation.jitter",
+                        "value": false
+                    },
+                    {
+                        "key": "data.train.augmentation.gaussian_blur",
+                        "value": false
+                    },
+                    {
+                        "key": "data.train.augmentation.solarize",
+                        "value": false
+                    }
+                ]
+            ]
+        }
+    ],
+    "transfer": [{
+        "slurm_args": "--partition gpus24"
+    }]
+}

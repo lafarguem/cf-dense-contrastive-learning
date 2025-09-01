@@ -1,0 +1,62 @@
+linear_probe:
+  _target_: pretraining.evaluation.linear_probe.LinearProbeEvaluator
+  _recursive_: false
+
+  eval_name: linear_probe
+  eval_freq: 5
+  in_channels: 32
+  num_classes: 3
+  train_prop: 0.8
+  epochs: 5
+  device: ${train.device}
+  mean: ${evaluator.linear_probe.eval_augmentation.normalize.mean}
+  std: ${evaluator.linear_probe.eval_augmentation.normalize.std}
+  
+  optimizer: 
+    _target_: torch.optim.AdamW
+
+  criterion:
+    _target_: torch.nn.CrossEntropyLoss
+
+  probe:
+    _target_: torch.nn.Conv2d
+    kernel_size: 1
+
+  dataloader:
+    batch_size: 128
+    num_workers: 8
+    shuffle: false
+    pin_memory: true
+    drop_last: true
+    persistent_workers: false
+    prefetch_factor: 2
+
+  train_augmentation:
+    _target_: pretraining.augmentations.modular.ModularTransform
+
+    image_size: 224
+    normalize:
+      mean: [0.485]
+      std: [0.229]
+    rotate: 15
+    crop: 0.8
+    horizontal_flip: false
+    jitter: true
+    grayscale: false
+    gaussian_blur: 0.1
+    solarize: false
+    
+  eval_augmentation:
+    _target_: pretraining.augmentations.modular.ModularTransform
+
+    image_size: 224
+    normalize:
+      mean: [0.485]
+      std: [0.229]
+    rotate: false
+    crop: false
+    horizontal_flip: false
+    jitter: false
+    grayscale: false
+    gaussian_blur: false
+    solarize: false

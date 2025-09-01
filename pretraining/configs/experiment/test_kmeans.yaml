@@ -1,0 +1,70 @@
+# @package _global_
+defaults:
+  # - /evaluator/visualizations
+  - /evaluator/kmeans_clustering
+  # - /evaluator/latent_metrics
+  # - /evaluator/linear_probe
+  # - override /evaluator/reducer@evaluator.visualizations.reducer: umap
+  - override /data/dataset@data.train: padchest
+  - override /data/dataset@data.eval: padchest_test
+  - override /data/augmentation@data.train.augmentation: modular
+  - override /data/augmentation@data.eval.augmentation: modular
+  - override /model: single_branch_unet
+  - override /loss/dense: vader_two
+  - override /loss/instance: simclr
+
+loss:
+  global_loss_weight: 0
+  dense:
+    sampler:
+      name: random_overlap
+      num_samples: 1000
+    chunk_divs: 3
+
+train:
+  exp_name: unsupervised_cf_dense_two_full_random
+
+
+data:
+  train:
+    dataloader:
+      batch_size: 8
+    dataset:
+      cf_suffixes: ['sc', 'pe', 'sc_pe']
+    augmentation:
+      view1:
+        rotate: false
+        crop: 0.08
+        horizontal_flip: true
+        jitter: true
+        grayscale: false
+        gaussian_blur: 1.0
+        solarize: false
+      view2:
+        rotate: false
+        crop: 0.08
+        horizontal_flip: true
+        jitter: true
+        grayscale: false
+        gaussian_blur: 0.1
+        solarize: true
+  eval:
+    dataloader:
+      batch_size: 8
+    augmentation:
+      view1:
+        rotate: false
+        crop: 0.08
+        horizontal_flip: true
+        jitter: true
+        grayscale: false
+        gaussian_blur: 1.0
+        solarize: false
+      view2:
+        rotate: false
+        crop: 0.08
+        horizontal_flip: true
+        jitter: true
+        grayscale: false
+        gaussian_blur: 0.1
+        solarize: true

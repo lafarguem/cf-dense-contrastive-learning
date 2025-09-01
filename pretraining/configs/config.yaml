@@ -1,0 +1,41 @@
+defaults:
+  - _self_
+  - data/dataset@data.train: padchest
+  - data/dataset@data.eval: padchest_val
+  - data/augmentation@data.train.augmentation: byol_grayscale
+  - data/augmentation@data.eval.augmentation: val_grey
+  - model: single_branch_unet
+  - optimizer: adamw
+  - scheduler: cosine
+  - train: base
+  - loss/dense: vader_two
+  - loss/instance: simclr
+  - global_loss_weight_scheduler: constant
+
+  # disable hydra logging
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+loss:
+  global_loss_weight: 0.0
+
+# output directory
+hydra:
+  run:
+    dir: outputs/pretraining/${train.exp_name}/${now:%Y-%m-%d_%H-%M-%S}
+
+# runtime args
+runtime:
+  iter_per_epoch: null
+  num_instances: null
+  start_epoch: 1
+  local_rank: 0
+  batch_size: ${data.train.dataloader.batch_size}
+  epochs: ${train.epochs}
+  output_dir: null
+  job_name: null
+  distributed: false
+  device: null
+  pipeline_metadata: null
+  amp_type: fp16
+  amp: false

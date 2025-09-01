@@ -1,0 +1,6 @@
+kmeans_clustering:
+  _target_: pretraining.evaluation.kmeans_clustering.KMeansEvaluator
+
+  eval_name: kmeans_clustering
+  eval_freq: 5
+  num_classes: 3

@@ -1,0 +1,25 @@
+{
+    "pretraining": [
+        {
+            "slurm_args": "--partition gpus48",
+            "experiment": "unsupervised_nocf_dense_all_none_random",
+            "ablations": [
+                [
+                    {
+                        "key": "data.train.augmentation.rotate",
+                        "value": 15
+                    }
+                ],
+                [
+                    {
+                        "key": "data.train.augmentation.crop",
+                        "value": 0.08
+                    }
+                ]
+            ]
+        }
+    ],
+    "transfer": [{
+        "slurm_args": "--partition gpus24"
+    }]
+}

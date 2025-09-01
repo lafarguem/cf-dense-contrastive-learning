@@ -1,0 +1,6 @@
+_target_: pretraining.augmentations.val.ValTransform
+
+image_size: 224
+normalize:
+  mean: [0.485]
+  std: [0.229]

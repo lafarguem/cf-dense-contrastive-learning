@@ -1,0 +1,55 @@
+# @package _global_
+defaults:
+  - /evaluator/visualizations
+  - override /evaluator/reducer@evaluator.visualizations.reducer: pca_umap
+  - override /data/dataset@data.train: imagenet
+  - override /data/dataset@data.eval: imagenet
+  - override /data/augmentation@data.train.augmentation: byol
+  - override /data/augmentation@data.eval.augmentation: byol
+  - override /model: pixpro
+  - override /loss/dense: pixpro
+  - override /loss/instance: simclr
+  - _self_
+
+loss:
+  global_loss_weight: 0.
+  dense:
+    sampler:
+      name: stride
+      stride: 6
+
+train:
+  exp_name: pixpro_imagenet
+  amp: true
+  epochs: 100
+  debug:
+    gpu_time: true
+
+data:
+  eval:
+    dataset:
+      split: val
+      cache: false
+      max_cache_size: 5
+    dataloader:
+      batch_size: 256
+      num_workers: 16
+  train:
+    dataloader:
+      batch_size: 256
+      num_workers: 16
+
+model:
+  global_update: []
+  student:
+    disable_instance: true
+    backbone:
+      in_channels: 3
+  teacher:
+    disable_instance: true
+    backbone:
+      in_channels: 3
+
+evaluator:
+  visualizations:
+    eval_freq: 1

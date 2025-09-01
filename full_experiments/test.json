@@ -1,0 +1,28 @@
+{
+    "pretraining": [
+        {
+            "exp_name": "test",
+            "slurm_args": "--partition gpus48",
+            "experiment": "unsupervised_nocf_dense_two_noflip_random",
+            "ablations": [
+                [
+                    {
+                        "key": "data.train.augmentation.jitter",
+                        "value": false
+                    },
+                    {
+                        "key": "data.train.augmentation.gaussian_blur",
+                        "value": false
+                    },
+                    {
+                        "key": "data.train.augmentation.solarize",
+                        "value": false
+                    }
+                ]
+            ]
+        }
+    ],
+    "transfer": [{
+        "slurm_args": "--partition gpus24"
+    }]
+}

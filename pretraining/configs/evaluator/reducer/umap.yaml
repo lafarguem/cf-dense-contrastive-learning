@@ -1,0 +1,4 @@
+reducer:
+  _target_: umap.UMAP
+  n_components: 2
+name: umap

@@ -1,0 +1,15 @@
+defaults:
+  - dataset_base
+  - dataloader_base
+  - _self_
+
+dataset:
+  _target_: pretraining.datasets.padchest.CounterfactualContrastivePreProcessedPadChestDataset
+
+  csv_path: /vol/biodata/data/chest_xray/BIMCV-PADCHEST/test_dataset.csv
+  preprocess_root: /vol/biomedic3/bglocker/mscproj/mal224/data/padchest
+  label: disease
+  cf_suffixes: []
+  seg_path: /vol/biodata/data/chest_xray/CheXmask/v0.4/OriginalResolution/Padchest.csv
+  parents: ['scanner', 'sex', 'disease']
+  manual_path: /vol/biomedic3/bglocker/mscproj/mal224/data/manual_padchest

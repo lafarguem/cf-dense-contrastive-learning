@@ -1,0 +1,9 @@
+_target_: pretraining.models.pixpro.PixPro
+
+pixpro_p: 1
+pixpro_momentum: 0.99
+pixpro_pos_ratio: 31.8
+pixpro_clamp_value: 0
+pixpro_transform_layer: 0
+pixpro_ins_loss_weight: 0
+base_encoder: resnet50

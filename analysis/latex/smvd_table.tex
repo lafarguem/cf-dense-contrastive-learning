@@ -1,0 +1,13 @@
+\centering
+\small
+\rowcolors{2}{white}{gray!15}
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=1.3(3)]S[table-format=1.3(3)]S[table-format=1.3(3)]S[table-format=2.1(3)]S[table-format=1.1(2)]}
+Pre-training & {DICE} & {DICE (pe)} & {DICE (nf)} & {Hausdorff 95} & {ASD} \\
+\specialrule{1pt}{0pt}{0pt}
+S-MVD-CL & \cellcolor{green!30} 0.939(19) & \cellcolor{green!30} 0.924(27) & 0.977(1) & \cellcolor{green!30} 7.3(34) & \cellcolor{green!30} 2.1(7) \\
+Segmentation & 0.936(23) & 0.920(32) & \cellcolor{green!30} 0.978(2) & 7.3(18) & 2.5(13) \\
+S-MVD-CL nu & 0.920(31) & 0.900(43) & 0.972(3) & 24.7(107) & 4.7(20) \\
+SimCLR & 0.909(29) & 0.886(41) & 0.967(3) & 11.9(53) & 3.6(16) \\
+None & 0.871(43) & 0.848(56) & 0.936(13) & 21.9(80) & 5.4(21) \\
+\specialrule{1pt}{0pt}{0pt}
+\end{tabularx}

@@ -1,0 +1,60 @@
+# @package _global_
+defaults:
+  - /evaluator/visualizations
+  - /evaluator/kmeans_clustering
+  - /evaluator/latent_metrics
+  - /evaluator/linear_probe
+  - override /evaluator/reducer@evaluator.visualizations.reducer: pca
+  - override /data/dataset@data.train: padchest_val
+  - override /data/dataset@data.eval: padchest_val
+  - override /data/augmentation@data.train.augmentation: byol_grayscale
+  - override /data/augmentation@data.eval.augmentation: byol_grayscale
+  - override /model: single_branch_unet
+  - override /loss/dense: vader_two
+  - override /loss/instance: simclr
+
+evaluator:
+  linear_probe:
+    dataloader:
+      batch_size: 16
+      num_workers: 4
+      pin_memory: true
+      persistent_workers: false
+      prefetch_factor: 2
+    train_prop: 0.5
+
+loss:
+  global_loss_weight: 0
+  dense:
+    sampler:
+      name: random_overlap
+      num_samples: 1000
+    chunk_divs: 3
+
+train:
+  exp_name: unsupervised_cf_dense_two_full_random
+
+  debug:
+    gpu_memory: true
+    ram: true
+    debug_split: 0.1
+
+data:
+  train:
+    dataloader:
+      batch_size: 2
+      num_workers: 4
+      # pin_memory: false
+      # persistent_workers: false
+      # prefetch_factor: null
+    dataset:
+      cf_suffixes: ['sc', 'pe', 'sc_pe']
+  eval:
+    dataset:
+      train_prop: 0.5
+    dataloader:
+      num_workers: 4
+      # pin_memory: false
+      # persistent_workers: false
+      # prefetch_factor: null
+      batch_size: 2

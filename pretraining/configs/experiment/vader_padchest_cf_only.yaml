@@ -1,0 +1,36 @@
+# @package _global_
+defaults:
+  - /evaluator/visualizations
+  - /evaluator/kmeans_clustering
+  - /evaluator/latent_metrics
+  - override /data/dataset@data.train: padchest
+  - override /data/dataset@data.eval: padchest
+  - override /data/augmentation@data.train.augmentation: val_grey
+  - override /data/augmentation@data.eval.augmentation: val_grey
+  - override /model: single_branch_unet
+  - override /loss/dense: vader_static
+  - override /loss/instance: simclr
+  - override /evaluator/reducer@evaluator.visualizations.reducer: pca
+
+loss:
+  global_loss_weight: 0
+  dense:
+    sampler:
+      name: stride
+      stride: 6
+
+train:
+  exp_name: vader_padchest
+
+
+data:
+  eval:
+    dataset:
+      cf_suffixes: ['sc', 'pe', 'sc_pe']
+      cache: false
+      max_cache_size: 5
+    dataloader:
+      batch_size: 8
+  train:
+    dataloader:
+      batch_size: 8

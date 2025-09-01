@@ -1,0 +1,36 @@
+defaults:
+  - _self_
+  - /evaluator/visualizations
+  - data/dataset@data.train: manual_padchest
+  - data/dataset@data.eval: kfold
+  - data/augmentation@data.train.augmentation: modular
+  - data/augmentation@data.eval.augmentation: modular
+  - model: unet
+  - optimizer: adamw
+  - scheduler: cosine
+  - train: base
+  - loss: cross_entropy
+
+  # disable hydra logging
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+# output directory
+hydra:
+  run:
+    dir: outputs/transfer/${train.exp_name}/${now:%Y-%m-%d_%H-%M-%S}
+
+# runtime args
+runtime:
+  iter_per_epoch: null
+  num_instances: null
+  start_epoch: 1
+  local_rank: 0
+  batch_size: ${data.train.dataloader.batch_size}
+  epochs: ${train.epochs}
+  output_dir: null
+  job_name: null
+  distributed: false
+  device: null
+  pretrain_id: null
+  pipeline_metadata: null

@@ -1,0 +1,38 @@
+# @package _global_
+defaults:
+  - override /data/dataset@data.train: padchest
+  - override /data/dataset@data.eval: padchest_val
+
+train:
+  epochs: 100
+  eval_freq: 10
+
+evaluator:
+  visualizations:
+    eval_freq: 10
+
+data:
+  train:
+    dataloader:
+      batch_size: 90
+      num_workers: 12
+    augmentation:
+      rotate: 15
+      crop: 0.2
+      horizontal_flip: false
+      jitter: true
+      grayscale: false
+      gaussian_blur: 0.5
+      solarize: false
+  eval:
+    dataloader:
+      batch_size: 90
+      num_workers: 12
+    augmentation:
+      rotate: false
+      crop: false
+      horizontal_flip: false
+      jitter: false
+      grayscale: false
+      gaussian_blur: false
+      solarize: false

@@ -1,0 +1,30 @@
+# @package _global_
+defaults:
+  - /evaluator/visualizations
+  - /evaluator/kmeans_clustering
+  - /evaluator/latent_metrics
+  - override /data/dataset@data.train: padchest
+  - override /data/dataset@data.eval: padchest_test
+  - override /model: single_branch_unet
+  - override /loss/dense: vader
+  - override /loss/instance: simclr
+  - override /evaluator/reducer@evaluator.visualizations.reducer: umap
+
+loss:
+  global_loss_weight: 0
+  dense:
+    sampler:
+      name: random_overlap
+      num_samples: 1500
+
+train:
+  exp_name: vader_padchest
+
+
+data:
+  eval:
+    dataloader:
+      batch_size: 8
+  train:
+    dataloader:
+      batch_size: 8

@@ -1,0 +1,28 @@
+{
+    "pretraining": [
+        {
+            "exp_name": "test_dist",
+            "slurm_args": "--partition gpus --gpu 2 --nodelist monal04",
+            "experiment": "unsupervised_nocf_dense_two_noflip_random",
+            "ablations": [
+                [
+                    {
+                        "key": "data.train.augmentation.jitter",
+                        "value": false
+                    },
+                    {
+                        "key": "data.train.augmentation.gaussian_blur",
+                        "value": false
+                    },
+                    {
+                        "key": "data.train.augmentation.solarize",
+                        "value": false
+                    }
+                ]
+            ]
+        }
+    ],
+    "transfer": [{
+        "slurm_args": "--partition gpus"
+    }]
+}

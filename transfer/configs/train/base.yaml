@@ -1,0 +1,28 @@
+project_name: msc_project
+exp_name: default
+amp: true
+epochs: 100
+grad_clip: 250
+auto_resume: false
+resume: ""
+print_freq: 100
+save_freq: 10
+eval_freq: 10
+warmup_epoch: 5
+warmup_multiplier: 100
+pretrained_model: ""
+evaluate_at_start: false
+metric_key: eval_dice
+device: cuda
+metrics:
+  hausdorff: True
+  hausdorff_95: True
+  dice: True
+  average_surface_distance: True
+debug:
+  ram: false
+  gpu: false
+  nan: false
+  gpu_time: false
+  wandb_offline: false
+  gpu_memory: false

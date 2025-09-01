@@ -1,0 +1,28 @@
+_target_: pretraining.models.contrastive.pixpro.DualBranchPixPro
+
+momentum: 0.99
+always_update: ['backbone', 'projector']
+global_update: ['projector_instance']
+
+student:
+  _target_: pretraining.models.contrastive.pixpro.PixProStudent
+  pixpro_p: 2
+  pixpro_clamp_value: 0
+  pixpro_transform_layer: 1
+  backbone:
+    _target_: pretraining.models.backbones.unet.Unet
+    in_channels: 1
+    decoder_channels: null
+    has_decoder: false
+    encoder_name: resnet50
+    encoder_weights: imagenet
+
+teacher:
+  _target_: pretraining.models.contrastive.pixpro.PixProTeacher
+  backbone:
+    _target_: pretraining.models.backbones.unet.Unet
+    in_channels: 1
+    decoder_channels: null
+    has_decoder: false
+    encoder_name: resnet50
+    encoder_weights: imagenet

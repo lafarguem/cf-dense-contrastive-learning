@@ -1,0 +1,15 @@
+\centering
+\small
+\rowcolors{2}{white}{gray!15}
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=2.1(3)]S[table-format=2.1(3)]S[table-format=1.1(2)]S[table-format=1.1(2)]}
+Pre-training & {Hausdorff 95 (nf)} & {Hausdorff 95 (pe)} & {ASD (nf)} & {ASD (pe)} \\
+\specialrule{1pt}{0pt}{0pt}
+S-MVD-CL & 2.0(1) & \cellcolor{green!30} 9.3(47) & 0.8(1) & \cellcolor{green!30} 2.5(10) \\
+Segmentation & \cellcolor{green!30} 2.0(2) & 9.3(24) & \cellcolor{green!30} 0.8(1) & 3.1(18) \\
+S-DVD-CL & 2.2(2) & 10.2(54) & 0.8(1) & 3.8(27) \\
+DVD-CL & 2.4(2) & 13.5(50) & 0.9(1) & 3.6(14) \\
+MVD-CL & 2.6(4) & 11.6(69) & 1.0(1) & 3.2(16) \\
+SimCLR & 3.1(4) & 14.8(66) & 1.2(1) & 4.5(22) \\
+None & 10.3(49) & 25.6(95) & 2.6(7) & 6.3(26) \\
+\specialrule{1pt}{0pt}{0pt}
+\end{tabularx}

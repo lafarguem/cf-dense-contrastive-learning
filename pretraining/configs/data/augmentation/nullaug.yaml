@@ -1,0 +1,7 @@
+_target_: pretraining.augmentations.null_aug.NULLTransform
+
+image_size: 224
+crop: 0.08
+normalize:
+  mean: [0.485]
+  std: [0.229]

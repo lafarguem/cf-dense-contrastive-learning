@@ -1,0 +1,6 @@
+latent_metrics:
+  _target_: pretraining.evaluation.latent_metrics.LatentSpaceEvaluator
+
+  eval_name: latent_space_shape
+  eval_freq: 5
+  num_classes: 3

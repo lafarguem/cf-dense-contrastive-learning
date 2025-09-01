@@ -1,0 +1,23 @@
+project_name: msc_project
+exp_name: main
+epochs: 20
+amp: true
+grad_clip: 1.0
+auto_resume: false
+resume: ""
+print_freq: 100
+save_freq: 10
+eval_freq: 1
+warmup_epoch: 5
+warmup_multiplier: 100
+pretrained_model: ""
+evaluate_at_start: false
+metric_key: probe_dice
+device: cuda
+debug:
+  ram: false
+  nan: false
+  gpu_time: false
+  wandb_offline: false
+  gpu_memory: false
+  debug_split: null

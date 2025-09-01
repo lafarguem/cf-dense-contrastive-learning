@@ -1,0 +1,8 @@
+__pycache__/
+outputs/
+output/
+.metadata/
+.hydra/
+/test/
+/pretraining/datasets/test.py
+pyrightconfig.json

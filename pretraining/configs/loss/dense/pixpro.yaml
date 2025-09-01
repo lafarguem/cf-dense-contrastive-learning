@@ -1,0 +1,5 @@
+_target_: pretraining.losses.unsupervised_loss.PixProLoss
+
+similarity: dot
+
+pos_pixel_dist: 35.8

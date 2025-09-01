@@ -1,0 +1,8 @@
+dataloader:
+  batch_size: 6
+  num_workers: 6
+  shuffle: true
+  pin_memory: true
+  drop_last: false
+  persistent_workers: true
+  prefetch_factor: 2

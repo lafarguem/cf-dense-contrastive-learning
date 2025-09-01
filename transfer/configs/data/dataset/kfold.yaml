@@ -1,0 +1,7 @@
+defaults:
+  - dataloader_base
+  - _self_
+
+dataset:
+  num_folds: 5
+  cf_suffixes: ${data.train.dataset.cf_suffixes}

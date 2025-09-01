@@ -1,0 +1,15 @@
+defaults:
+  - dataset_base
+  - dataloader_base
+  - _self_
+
+dataset:
+  _target_: pretraining.datasets.imagenet.ContrastiveImageNetDataset
+
+  root_path: /vol/biodata/data/ILSVRC2012
+  split: train
+  
+  cache: false
+  max_cache_size: 24
+  cache_dim: [1,256,256]
+  exclude_paths: ['/vol/biodata/data/imagenet/train/n07590611/n07590611_3061.JPEG']

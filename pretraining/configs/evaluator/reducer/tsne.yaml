@@ -1,0 +1,5 @@
+reducer:
+  _target_: sklearn.manifold.TSNE
+  n_components: 2
+  perplexity: 30
+name: tsne

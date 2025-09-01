@@ -1,0 +1,2 @@
+_target_: pretraining.builders.scheduler_builder.LinearUpdater
+keypoints: [[0, 1.0], [5, 0.5], [15, 0.0]]

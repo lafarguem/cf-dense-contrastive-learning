@@ -1,0 +1,13 @@
+_target_: pretraining.augmentations.modular.ModularTransform
+
+image_size: 224
+normalize:
+  mean: [0.485]
+  std: [0.229]
+rotate: 15
+crop: 0.08
+horizontal_flip: false
+jitter: true
+grayscale: false
+gaussian_blur: 0.5
+solarize: false

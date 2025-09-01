@@ -1,0 +1,6 @@
+_target_: pretraining.augmentations.static.StaticTransform
+
+image_size: 224
+normalize:
+  mean: [0.485]
+  std: [0.229]

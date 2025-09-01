@@ -1,0 +1,22 @@
+# @package _global_
+data:
+  train:
+    augmentation:
+      rotate: 15
+      crop: 0.2
+      horizontal_flip: false
+      jitter: true
+      grayscale: false
+      gaussian_blur: 0.5
+      solarize: false
+  eval:
+    dataloader:
+      batch_size: 64
+    augmentation:
+      rotate: false
+      crop: false
+      horizontal_flip: false
+      jitter: false
+      grayscale: false
+      gaussian_blur: false
+      solarize: false

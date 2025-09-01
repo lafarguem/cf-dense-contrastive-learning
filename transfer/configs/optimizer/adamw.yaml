@@ -1,0 +1,6 @@
+_target_: torch.optim.AdamW
+
+scale_lr: false
+lr: 0.003
+
+kwargs:

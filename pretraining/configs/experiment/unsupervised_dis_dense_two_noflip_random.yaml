@@ -1,0 +1,51 @@
+# @package _global_
+defaults:
+  - /evaluator/visualizations
+  - /evaluator/kmeans_clustering
+  - /evaluator/latent_metrics
+  - /evaluator/linear_probe
+  - override /data/dataset@data.train: padchest
+  - override /data/dataset@data.eval: padchest_test
+  - override /data/augmentation@data.train.augmentation: modular
+  - override /data/augmentation@data.eval.augmentation: modular
+  - override /model: single_branch_unet
+  - override /loss/dense: vader_two
+  - override /loss/instance: simclr
+  - override /evaluator/reducer@evaluator.visualizations.reducer: umap
+
+loss:
+  global_loss_weight: 0
+  dense:
+    sampler:
+      name: random_overlap
+      num_samples: 1000
+    chunk_divs: 3
+  
+train:
+  exp_name: unsupervised_cf_dense_two_noflip_random
+
+evaluator:
+  linear_probe:
+    dataloader:
+      batch_size: 64
+      
+data:
+  train:
+    dataloader:
+      batch_size: 8
+    dataset:
+      cf_suffixes: ['pe']
+    augmentation:
+      rotate: 15
+      crop: 0.08
+      horizontal_flip: false
+      jitter: true
+      grayscale: false
+      gaussian_blur: 0.5
+      solarize: true
+  eval:
+    dataset:
+      cf_suffixes: ${data.train.dataset.cf_suffixes}
+    dataloader:
+      batch_size: 8
+    augmentation: ${data.train.augmentation}

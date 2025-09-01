@@ -1,0 +1,16 @@
+defaults:
+  - reducer@visualizations.reducer: pca_tsne
+
+visualizations:
+  _target_: pretraining.evaluation.visualizations.VisualizationEvaluator
+
+  eval_name: space_visualizer
+  eval_freq: 5
+  sample_pixels: 10000
+  all: true
+  one_view: true
+  one_image: true
+  mean: ${data.eval.augmentation.normalize.mean}
+  std: ${data.eval.augmentation.normalize.std}
+  cf_suffixes: ${data.eval.dataset.cf_suffixes}
+  fit_epochs: []

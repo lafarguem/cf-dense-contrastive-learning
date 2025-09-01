@@ -1,0 +1,16 @@
+defaults:
+  - dataset_base
+  - dataloader_base
+  - _self_
+
+dataset:
+  _target_: pretraining.datasets.mimic_cxr.CounterfactualContrastiveMimicCXRDataset
+
+  root_path: /vol/biodata/data/chest_xray/mimic-cxr-jpg
+  split_path: /vol/biodata/data/chest_xray/mimic-cxr-jpg/mimic-cxr-2.0.0-split.csv
+  split: train
+  cache: false
+  pathologies_only: [No Finding, Pleural Effusion]
+  meta_dir: /vol/biomedic3/data/mimic-cxr-jpg-224/meta
+  label: Pleural Effusion
+  seg_path: /vol/biodata/data/chest_xray/CheXmask/v0.4/OriginalResolution/MIMIC-CXR-JPG.csv

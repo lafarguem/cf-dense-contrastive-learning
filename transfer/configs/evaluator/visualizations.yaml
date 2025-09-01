@@ -1,0 +1,9 @@
+visualizations:
+  _target_: transfer.evaluation.visualizations.VisualizationEvaluator
+
+  eval_name: segmentation_visualizer
+  eval_freq: 10
+  mean: ${data.eval.augmentation.normalize.mean}
+  std: ${data.eval.augmentation.normalize.std}
+  seperate_disease: true
+  num_samples: 4

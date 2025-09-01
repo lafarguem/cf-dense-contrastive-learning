@@ -1,0 +1,17 @@
+_target_: pretraining.losses.supervised_loss.SupervisedContrastiveLoss
+
+temperature: 0.7
+bg_anchors: false
+use_labels: true
+chunk_divs: 2
+distance_threshold: 0.1
+
+matching_rule:
+  intra_view_same_class: 1
+  intra_view_different_class: 0
+  inter_view_same_pixel: 1
+  inter_view_same_class: 1
+  inter_view_different_class: 0
+  inter_image_same_class: 1
+  inter_image_different_class: 0
+  self_similarity: -1

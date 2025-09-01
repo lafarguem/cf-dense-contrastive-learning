@@ -1,0 +1,4 @@
+reducer:
+  _target_: sklearn.decomposition.PCA
+  n_components: 2
+name: pca

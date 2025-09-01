@@ -1,0 +1,3 @@
+_target_: pretraining.losses.ntxent.NTXentLoss
+
+temperature: 0.5

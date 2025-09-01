@@ -1,0 +1,9 @@
+_target_: pretraining.models.backbones.unet.Unet
+
+encoder_name: resnet50
+encoder_weights: imagenet
+in_channels: 1
+decoder_channels: null
+has_decoder: true
+dense_projection_head: [256, 128]
+instance_projection_head: [1024, 128]
