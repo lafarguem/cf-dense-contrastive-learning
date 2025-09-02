@@ -32,7 +32,7 @@ embed.beta = 1.0
 embed.accu_steps = 2
 embed.bias_max_res = 64
 embed.x_like = "fixed_dgauss"
-embed.std_init = 1
+embed.std_init = 1e-2
 embed.epochs = 100
 HPARAMS_REGISTRY["embed"] = embed
 

@@ -151,7 +151,8 @@ def trainer(args, model, ema, dataloaders, optimizer, scheduler, writer, logger,
         logger.info(f"Epoch {args.epoch}:")
 
         stats = run_epoch(dataloaders["train"], viz_batch, training=True)
-        acc, f1 = run_classifier(args, ema.ema_model, eval_classifier, dataloaders['valid'])
+        if eval_classifier is not None:
+            acc, f1 = run_classifier(args, ema.ema_model, eval_classifier, dataloaders['valid'])
 
         writer.add_scalar("nelbo/train", stats["elbo"], args.epoch)
         writer.add_scalar("nll/train", stats["nll"], args.epoch)

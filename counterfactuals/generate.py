@@ -92,7 +92,6 @@ def main(args):
                     if not os.path.exists(path):
                         print(path)
 
-
 if __name__ == "__main__":
     from counterfactuals.hps import add_arguments, setup_hparams
     parser = argparse.ArgumentParser()

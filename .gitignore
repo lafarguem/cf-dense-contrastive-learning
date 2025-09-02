@@ -6,4 +6,4 @@ output/
 /test/
 /pretraining/datasets/test.py
 pyrightconfig.json
-.DS_Sstore
+.DS_Store
