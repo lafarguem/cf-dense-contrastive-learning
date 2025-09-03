@@ -95,24 +95,6 @@ For example:
 python -m pretraining.main +experiment=dvd_cl
 python -m transfer.main +experiment=default train.pretrained_model=path/to/weights/best.pt
 ```
-
----
-
-## **Example Hydra Configuration**
-
-Below is an example Hydra configuration file showing the default hyperparameters used in our experiments:
-
-```yaml
-# hydra/config.yaml
-# For full configuration, see the repository configs
-defaults:
-  - override /dataset: padchest
-  - override /model: hvae
-  - override /training: default
-```
-
-For more details, check the [Hydra documentation](https://hydra.cc/docs/advanced/instantiate_objects/overview/).
-
 ---
 
 ## **Adding New Components**
