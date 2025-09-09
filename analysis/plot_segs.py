@@ -5,13 +5,13 @@ from pathlib import Path
 import matplotlib.colors as mcolors
 
 output_directory = Path('/vol/biomedic3/bglocker/mscproj/mal224/DCCL/analysis/segmentations/')
-num_samples=1
+num_samples=3
 torch.manual_seed(39)
 
 name_to_fig = {'CheXmask': 'Segmentation\npre-training', 'No pretraining': 'No pre-training', 'S-MVVD-CL': 'S-MVD-CL'}
 
-fig_unsupervised = ['No pretraining', 'SimCLR', 'DVD-CL', 'MVD-CL']
-fig_supervised = ['CheXmask', 'S-DVD-CL', 'S-MVVD-CL']
+fig_unsupervised = ['No pretraining', 'SimCLR', 'VADeR', 'DVD-CL', 'MVD-CL']
+fig_supervised = ['CheXmask', 'SSDCL', 'S-DVD-CL', 'S-MVD-CL']
 
 colors = [(0, 0, 0, 0),
           (31/255, 50/255, 200/255, 0.6), 
@@ -20,6 +20,15 @@ colors = [(0, 0, 0, 0),
 cmap = mcolors.ListedColormap(colors)
 bounds = [0, 1, 2, 3]
 norm = mcolors.BoundaryNorm(bounds, cmap.N)
+
+
+colors2 = [(0, 0, 0, 0),
+          (70/255, 70/255, 220/255, 0.4), 
+          (255/255, 70/255, 70/255, 0.4)]
+
+cmap2 = mcolors.ListedColormap(colors2)
+bounds2 = [0, 1, 2, 3]
+norm2 = mcolors.BoundaryNorm(bounds2, cmap.N)
 
 title_font_size = 22
 subtitle_font_size = 20
@@ -52,30 +61,45 @@ def plot_inputs(axes, images, nf_idxs, pe_idxs, std, mean):
             axes[_i, j].imshow(img_plot, cmap='gray')
             axes[_i, j].axis('off')
 
+# def plot_label(axes, mask, nf_idxs, pe_idxs):
+#     axes[0, 1].set_title('Ground truth', fontsize=title_font_size)
+#     nf_n = len(nf_idxs)
+#     for i,idx in enumerate(nf_idxs):
+#         true_mask = mask[idx].cpu().permute(1,2,0).numpy()
+
+#         axes[i, 1].imshow(true_mask, cmap=cmap, norm=norm)
+
+#     for i,idx in enumerate(pe_idxs):
+#         _i = i + nf_n
+#         true_mask = mask[idx].cpu().permute(1,2,0).numpy()
+
+#         axes[_i, 1].imshow(true_mask, cmap=cmap, norm=norm)
+
 def plot_label(axes, mask, nf_idxs, pe_idxs):
     axes[0, 1].set_title('Ground truth', fontsize=title_font_size)
     nf_n = len(nf_idxs)
-    for i,idx in enumerate(nf_idxs):
-        true_mask = mask[idx].cpu().permute(1,2,0).numpy()
+    print(mask[0].shape)
 
-        axes[i, 1].imshow(true_mask, cmap=cmap, norm=norm)
-
-    for i,idx in enumerate(pe_idxs):
+    for i, idx in enumerate(nf_idxs):
+        for j in range(1,len(axes[i])):
+            true_mask = mask[idx,0]
+            axes[i, j].contour(true_mask, levels=3, colors=['none','blue','red'], linewidths=1.5)
+    for i, idx in enumerate(pe_idxs):
         _i = i + nf_n
-        true_mask = mask[idx].cpu().permute(1,2,0).numpy()
-
-        axes[_i, 1].imshow(true_mask, cmap=cmap, norm=norm)
+        for j in range(1,len(axes[i])):
+            true_mask = mask[idx,0]
+            axes[_i, j].contour(true_mask, levels=3, colors=['none','blue','red'], linewidths=1.5)
 
 def plot_column(axes, col, nf_idxs, pe_idxs, out):
     nf_n = len(nf_idxs)
     for i,idx in enumerate(nf_idxs):
         pred_mask = out[idx].argmax(dim=0).cpu().numpy()
-        axes[i, col].imshow(pred_mask, cmap=cmap, norm=norm)
+        axes[i, col].imshow(pred_mask, cmap=cmap2, norm=norm2)
 
     for i,idx in enumerate(pe_idxs):
         _i = i + nf_n
         pred_mask = out[idx].argmax(dim=0).cpu().numpy()
-        axes[_i, col].imshow(pred_mask, cmap=cmap, norm=norm)
+        axes[_i, col].imshow(pred_mask, cmap=cmap2, norm=norm2)
 
 def log(data, output_dir, model_names, idxs_nf, idxs_pe, fig_name='segmentation.png', fig_ratio = (3,3), title = 'Segmentation results'):
     mean = data['mean']

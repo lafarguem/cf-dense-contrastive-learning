@@ -38,7 +38,7 @@ else:
 
 def prepare_padchest_csv():
     df = pd.read_csv(
-        PADCHEST_ROOT / "PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv"
+        PADCHEST_ROOT / "train_dataset.csv"
     )
     def process(x, target):
         if isinstance(x, str):

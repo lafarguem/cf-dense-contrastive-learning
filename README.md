@@ -122,6 +122,7 @@ Hydra will automatically instantiate your component based on this configuration.
 * [Hydra Documentation](https://hydra.cc/docs/advanced/instantiate_objects/overview/)
 * [PadChest Dataset](https://bimcv.cipf.es/bimcv-projects/padchest/)
 * [CheXMask Dataset](https://physionet.org/content/chexmask-cxr-segmentation-data/1.0.0/)
+* [CF-seg Dataset](https://arxiv.org/abs/2506.16213)
 
 ---
 

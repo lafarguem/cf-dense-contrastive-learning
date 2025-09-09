@@ -5,7 +5,7 @@ import yaml
 import numpy as np
 import csv
 import math
-from analysis import generate_latex
+from analysis import generate_latex, generate_plots
 
 def flatten_dict(d, parent_key="", sep="."):
     items = []
@@ -122,3 +122,4 @@ if __name__ == "__main__":
         result_df.to_csv(output_dir / out_name, index=False, quoting=csv.QUOTE_STRINGS)
     
     generate_latex.main()
+    generate_plots.main()

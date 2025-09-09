@@ -3,6 +3,7 @@ WITH ranked AS (
         *,
         ROW_NUMBER() OVER (
             PARTITION BY
+                "pretraining.cfg.train.epochs",
                 "pretraining.cfg.supervised",
                 "pretraining.cfg.all_views",
                 "pretraining.cfg.pe_cf",
@@ -42,7 +43,7 @@ parameter_rows AS (
                  AND "pretraining.cfg.aug.jitter" = FALSE
                  AND "pretraining.cfg.supervised" = FALSE
                  AND "pretraining.cfg.all_views" = FALSE
-            THEN 'DVD-CL nu'  -- All false
+            THEN 'DVD-CL\textsuperscript{\textdagger}'  -- All false
             WHEN "pretraining.cfg.pe_cf" = FALSE
                  AND "pretraining.cfg.sc_cf" = FALSE
                  AND "pretraining.cfg.aug.rotate" = FALSE
@@ -50,24 +51,27 @@ parameter_rows AS (
                  AND "pretraining.cfg.aug.jitter" = FALSE
                  AND "pretraining.cfg.supervised" = FALSE
                  AND "pretraining.cfg.all_views" = TRUE
-            THEN 'MVD-CL nu'  -- All false
+            THEN 'MVD-CL\textsuperscript{\textdagger}'  -- All false
             WHEN "transfer.slurm_job_id" = 10751 THEN 'Segmentation'
             WHEN "transfer.slurm_job_id" = 10938 THEN 'SimCLR'
             WHEN "transfer.slurm_job_id" = 10828 THEN 'No augmentations'
+            WHEN "transfer.slurm_job_id" = 10674 THEN 'SSDCL'
+            WHEN "transfer.slurm_job_id" = 10768 THEN 'VADeR'
         END AS config_label
     FROM ranked
     WHERE (rn = 1
+      AND "pretraining.cfg.train.epochs" = 20.0
       AND "transfer.best_eval_dice" IS NOT NULL)
-      OR "transfer.slurm_job_id" IN (10751,10938,10828)
+      OR "transfer.slurm_job_id" IN (10751,10938,10828,10674,10768)
 )
 SELECT
     config_label AS "Pre-training",
-    "transfer.best_eval_dice" AS "DICE mean",
-    "transfer.best_eval_dice_pe" AS "DICE (pe) mean",
-    "transfer.best_eval_dice_nf" AS "DICE (nf) mean",
-    "transfer.best_eval_dice_std" AS "DICE std",
-    "transfer.best_eval_dice_pe_std" AS "DICE (pe) std",
-    "transfer.best_eval_dice_nf_std" AS "DICE (nf) std",
+    "transfer.best_eval_dice" AS "DSC mean",
+    "transfer.best_eval_dice_pe" AS "DSC (pe) mean",
+    "transfer.best_eval_dice_nf" AS "DSC (nf) mean",
+    "transfer.best_eval_dice_std" AS "DSC std",
+    "transfer.best_eval_dice_pe_std" AS "DSC (pe) std",
+    "transfer.best_eval_dice_nf_std" AS "DSC (nf) std",
     "transfer.best_eval_hausdorff_95" AS "Hausdorff 95 mean",
     "transfer.best_eval_hausdorff_95_std" AS "Hausdorff 95 std",
     "transfer.best_eval_asd" AS "ASD mean",

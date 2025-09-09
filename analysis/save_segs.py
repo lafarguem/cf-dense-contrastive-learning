@@ -21,6 +21,8 @@ weights_list = [
     ('SimCLR','/vol/biomedic3/bglocker/mscproj/mal224/DCCL/outputs/full/simclr/2025-08-22_11-57-36/pretraining/weights/best.pt'),
     ('No pretraining',''),
     ('CheXmask','/vol/biomedic3/bglocker/mscproj/mal224/DCCL/outputs/transfer/chexmask/2025-08-15_10-30-04/weights/best.pt'),
+    ('SSDCL','/vol/biomedic3/bglocker/mscproj/mal224/DCCL/outputs/full/supervised_nocf_dense_all_noflip_random_abl_data.train.augmentation.rotate_data.train.augmentation.crop/2025-08-14_17-59-37/pretraining/weights/best.pt'),
+    ('VADeR','/vol/biomedic3/bglocker/mscproj/mal224/DCCL/outputs/full/unsupervised_nocf_dense_two_noflip_random_abl_data.train.augmentation.rotate/2025-08-17_14-57-33/pretraining/weights/best.pt'),
     ('DVD-CL','/vol/biomedic3/bglocker/mscproj/mal224/DCCL/outputs/full/unsupervised_cf_dense_two_noflip_random/2025-08-14_17-03-42/pretraining/weights/best.pt'),
     ('S-DVD-CL','/vol/biomedic3/bglocker/mscproj/mal224/DCCL/outputs/full/supervised_cf_dense_two_noflip_random/2025-08-21_12-38-44/pretraining/weights/best.pt'),
     ('MVD-CL','/vol/biomedic3/bglocker/mscproj/mal224/DCCL/outputs/full/unsupervised_cf_dense_all_noflip_random/2025-08-15_23-28-38/pretraining/weights/best.pt'),

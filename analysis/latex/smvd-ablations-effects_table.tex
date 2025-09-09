@@ -1,12 +1,12 @@
 \centering
 \small
 \rowcolors{2}{white}{gray!15}
-\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=1.3(3)]S[table-format=1.3(3)]S[table-format=1.3(3)]S[table-format=2.1(3)]S[table-format=1.1(2)]}
-Augmentations & {DICE} & {DICE (pe)} & {DICE (nf)} & {Hausdorff 95} & {ASD} \\
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=2.2(4)]S[table-format=2.2(4)]S[table-format=2.2(4)]S[table-format=2.1(3)]S[table-format=1.2(3)]}
+Augmentations & {DSC} & {DSC (pe)} & {DSC (nf)} & {Hausdorff 95} & {ASD} \\
 \specialrule{1pt}{0pt}{0pt}
-All & \cellcolor{green!30} 0.939(19) & \cellcolor{green!30} 0.924(27) & 0.977(1) & \cellcolor{green!30} 7.3(34) & \cellcolor{green!30} 2.1(7) \\
-W/o effects & 0.935(19) & 0.919(26) & \cellcolor{green!30} 0.978(1) & 7.4(34) & 2.1(8) \\
-None & 0.920(31) & 0.900(43) & 0.972(3) & 24.7(107) & 4.7(20) \\
-Effects only & 0.929(28) & 0.911(38) & 0.976(2) & 15.3(50) & 3.3(12) \\
+None & 91.96(314) & 89.97(431) & 97.15(32) & 24.7(107) & 4.65(204) \\
+Effects only & 92.91(277) & 91.10(384) & 97.58(17) & 15.3(50) & 3.31(120) \\
+W/o effects & 93.53(186) & 91.87(261) & \cellcolor{green!30} 97.79(13) & 7.4(34) & 2.13(77) \\
+All & \cellcolor{green!30} 93.93(192) & \cellcolor{green!30} 92.43(267) & 97.75(9) & \cellcolor{green!30} 7.3(34) & \cellcolor{green!30} 2.05(74) \\
 \specialrule{1pt}{0pt}{0pt}
 \end{tabularx}

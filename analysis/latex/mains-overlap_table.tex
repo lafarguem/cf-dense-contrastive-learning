@@ -1,15 +1,17 @@
 \centering
 \small
 \rowcolors{2}{white}{gray!15}
-\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=1.3(3)]S[table-format=1.3(3)]S[table-format=1.3(3)]}
-Pre-training & {DICE} & {DICE (pe)} & {DICE (nf)} \\
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=2.2(4)]S[table-format=2.2(4)]S[table-format=2.2(4)]}
+Pre-training & {DSC} & {DSC (pe)} & {DSC (nf)} \\
 \specialrule{1pt}{0pt}{0pt}
-S-MVD-CL & \cellcolor{green!30} 0.939(19) & \cellcolor{green!30} 0.924(27) & 0.977(1) \\
-Segmentation & 0.936(23) & 0.920(32) & \cellcolor{green!30} 0.978(2) \\
-S-DVD-CL & 0.931(26) & 0.914(36) & 0.976(1) \\
-DVD-CL & 0.928(22) & 0.911(32) & 0.974(1) \\
-MVD-CL & 0.923(27) & 0.904(38) & 0.972(3) \\
-SimCLR & 0.909(29) & 0.886(41) & 0.967(3) \\
-None & 0.871(43) & 0.848(56) & 0.936(13) \\
+None & 87.05(434) & 84.76(563) & 93.59(128) \\
+SimCLR & 90.90(294) & 88.61(415) & 96.71(28) \\
+VADeR & 92.26(266) & 90.33(368) & 97.22(16) \\
+Segmentation & 93.65(233) & 92.02(323) & \cellcolor{green!30} 97.81(20) \\
+SSDCL & 92.91(277) & 91.10(384) & 97.58(17) \\
+DVD-CL & 92.76(223) & 91.08(318) & 97.36(14) \\
+MVD-CL & 92.27(273) & 90.36(379) & 97.18(25) \\
+S-DVD-CL & 93.15(261) & 91.43(365) & 97.62(11) \\
+S-MVD-CL & \cellcolor{green!30} 93.93(192) & \cellcolor{green!30} 92.43(267) & 97.75(9) \\
 \specialrule{1pt}{0pt}{0pt}
 \end{tabularx}

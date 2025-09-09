@@ -1,12 +1,12 @@
 \centering
 \small
 \rowcolors{2}{white}{gray!15}
-\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=1.3(3)]S[table-format=1.3(3)]S[table-format=1.3(3)]S[table-format=2.1(3)]S[table-format=1.1(2)]}
-Augmentations & {DICE} & {DICE (pe)} & {DICE (nf)} & {Hausdorff 95} & {ASD} \\
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X!{\vrule width 1pt}S[table-format=2.2(4)]S[table-format=2.2(4)]S[table-format=2.2(4)]S[table-format=2.1(3)]S[table-format=1.2(3)]}
+Augmentations & {DSC} & {DSC (pe)} & {DSC (nf)} & {Hausdorff 95} & {ASD} \\
 \specialrule{1pt}{0pt}{0pt}
-All & \cellcolor{green!30} 0.928(22) & \cellcolor{green!30} 0.911(32) & \cellcolor{green!30} 0.974(1) & \cellcolor{green!30} 10.5(36) & \cellcolor{green!30} 2.9(10) \\
-W/o crop & 0.913(32) & 0.892(45) & 0.966(3) & 13.1(80) & 3.3(16) \\
-None & 0.858(51) & 0.835(67) & 0.920(14) & 26.4(85) & 7.3(29) \\
-Crop only & 0.906(42) & 0.885(59) & 0.966(4) & 14.6(95) & 3.7(20) \\
+None & 85.80(509) & 83.51(673) & 91.96(144) & 26.4(85) & 7.26(293) \\
+Crop only & 90.62(422) & 88.49(587) & 96.57(38) & 14.6(95) & 3.68(204) \\
+W/o crop & 91.30(318) & 89.23(448) & 96.57(32) & 13.1(80) & 3.25(162) \\
+All & \cellcolor{green!30} 92.76(223) & \cellcolor{green!30} 91.08(318) & \cellcolor{green!30} 97.36(14) & \cellcolor{green!30} 10.5(36) & \cellcolor{green!30} 2.86(104) \\
 \specialrule{1pt}{0pt}{0pt}
 \end{tabularx}
